@@ -75,7 +75,7 @@ classes = [
 ]
 
 model.eval()
-x, y = test_data[9][0], test_data[9][1]
+x, y = test_data[2025][0], test_data[2025][1]
 with torch.no_grad():
     x = x.to(device)
     pred = model(x)
