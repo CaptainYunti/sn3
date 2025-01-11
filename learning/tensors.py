@@ -31,4 +31,20 @@ rand_tensor = torch.rand(shape)
 ones_tensor = torch.ones(shape)
 zeros_tensor = torch.zeros(shape)
 
-print(rand_tensor.dtype)
+tensor = torch.ones(4,4).to(device)
+
+tensor[:,2] = 9
+tensor[1] *= 2
+
+catted_tensor = torch.cat((tensor, tensor), dim=1)
+
+mult_tensor = tensor @ catted_tensor @ catted_tensor.T
+
+
+tensor_to_sum = torch.tensor([[1,2,3],[4,5,6]])
+
+tensor_to_sum.sub_(2)
+
+mnist_short_tensor = torch.rand([4, 1, 6, 6])
+
+print(mnist_short_tensor)
