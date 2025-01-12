@@ -47,4 +47,10 @@ tensor_to_sum.sub_(2)
 
 mnist_short_tensor = torch.rand([4, 1, 6, 6])
 
-print(mnist_short_tensor)
+new_tensor = torch.zeros(4,3)
+
+inx = torch.tensor([[2], [1], [1], [0]])
+
+new_tensor.scatter_(1, inx, 2)
+
+print(new_tensor)
