@@ -1,6 +1,8 @@
 import torch
 import numpy as np
 
+print("start")
+
 device = (
     "cuda"
     if torch.cuda.is_available()
@@ -53,4 +55,6 @@ inx = torch.tensor([[2], [1], [1], [0]])
 
 new_tensor.scatter_(1, inx, 2)
 
-print(new_tensor)
+target = torch.empty(3, dtype=torch.long).random_(5)
+
+print(target)
