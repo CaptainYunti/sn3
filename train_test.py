@@ -20,6 +20,7 @@ def train(dataloader: DataLoader, model: nn.Module, loss_fn, optimizer, device="
             loss, current = loss.item(), (batch+1) * len(X)
             print(f"loss: {loss:>7f} [{current:>5d}/{size:>5d}]")
 
+
 def test(dataloader: DataLoader, model: nn.Module, loss_fn, device="cpu"):
     size = len(dataloader.dataset)
     num_batches = len(dataloader)

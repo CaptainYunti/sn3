@@ -41,6 +41,7 @@ model_512_512_128 = my_models.ThreeHiddenLayer((512,512,128)).to(device)
 
 epochs = 10
 
+#models = []
 models = [model_128, model_256, model_512, model_512_256, model_512_512, model_512_512_128, model_512_512_512]
 loss_fn = nn.CrossEntropyLoss()
 optimizers = [torch.optim.SGD(model.parameters(), lr=1e-3) for model in models]
@@ -55,21 +56,22 @@ for indx, model in enumerate(models):
         test(test_dataloader, model, loss_fn, device)
         print("Done!\n\n")
 
+if len(models) > 0:
+    torch.save(model_128.state_dict(), "models/model_128_relu_sgd_10.pth")
+    torch.save(model_256.state_dict(), "models/model_256_relu_sgd_10.pth")
+    torch.save(model_512.state_dict(), "models/model_512_relu_sgd_10.pth")
 
-torch.save(model_128.state_dict(), "models/model_128_relu_sgd_10.pth")
-torch.save(model_256.state_dict(), "models/model_256_relu_sgd_10.pth")
-torch.save(model_512.state_dict(), "models/model_512_relu_sgd_10.pth")
+    torch.save(model_512_256.state_dict(), "models/model_512_256_relu_sgd_10.pth")
+    torch.save(model_512_512.state_dict(), "models/model_512_512_relu_sgd_10.pth")
 
-torch.save(model_512_256.state_dict(), "models/model_512_256_relu_sgd_10.pth")
-torch.save(model_512_512.state_dict(), "models/model_512_512_relu_sgd_10.pth")
-
-torch.save(model_512_512_128.state_dict(), "models/model_512_512_128_relu_sgd_10.pth")
-torch.save(model_512_512_512.state_dict(), "models/model_512_512_512_relu_sgd_10.pth")
+    torch.save(model_512_512_128.state_dict(), "models/model_512_512_128_relu_sgd_10.pth")
+    torch.save(model_512_512_512.state_dict(), "models/model_512_512_512_relu_sgd_10.pth")
 
 
 
 epochs = 30
 
+#models = []
 models = [model_512, model_512_512, model_512_512_128]
 optimizers = [torch.optim.SGD(model.parameters(), lr=1e-3) for model in models]
 
@@ -84,6 +86,7 @@ for indx, model in enumerate(models):
         print("Done!\n\n")
 
 
-torch.save(model_512.state_dict(), "models/model_512_relu_sgd_30.pth")
-torch.save(model_512_512.state_dict(), "models/model_512_512_relu_sgd_30.pth")
-torch.save(model_512_512_128.state_dict(), "models/model_512_512_128_relu_sgd_30.pth")
+if len(models) > 0:
+    torch.save(model_512.state_dict(), "models/model_512_relu_sgd_30.pth")
+    torch.save(model_512_512.state_dict(), "models/model_512_512_relu_sgd_30.pth")
+    torch.save(model_512_512_128.state_dict(), "models/model_512_512_128_relu_sgd_30.pth")
