@@ -40,3 +40,5 @@ def test(dataloader: DataLoader, model: nn.Module, loss_fn, device="cpu"):
 
     print(f"Test Error: \n Accuracy: {100*correct:>0.2f}%, AVG loss: {test_loss:>8f} \n")
 
+    return correct, test_loss
+
