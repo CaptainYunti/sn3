@@ -42,9 +42,13 @@ model_512_512_128 = my_models.ThreeHiddenLayer((512,512,128)).to(device)
 epochs = 10
 
 models = []
+
 #models = [model_128, model_256, model_512, model_512_256, model_512_512, model_512_512_128, model_512_512_512]
+#models = [model_512_512_512]
 loss_fn = nn.CrossEntropyLoss()
 optimizers = [torch.optim.SGD(model.parameters(), lr=1e-3) for model in models]
+
+
 
 print("Learning (10) ...")
 
@@ -129,7 +133,7 @@ if len(models) > 0:
 
 
 
-epochs = 16
+epochs = 20
 
 model_512_adam_relu = my_models.OneHiddenLayer(512).to(device)
 model_512_adam_sigmoid = my_models.OneHiddenLayer(512, nn.Sigmoid).to(device)
@@ -137,6 +141,7 @@ model_512_adam_tanh = my_models.OneHiddenLayer(512, nn.Tanh).to(device)
 model_512_adam_elu = my_models.OneHiddenLayer(512, nn.ELU).to(device)
 
 models = [model_512_adam_relu, model_512_adam_sigmoid, model_512_adam_tanh, model_512_adam_elu]
+#models = []
 
 optimizers = [torch.optim.Adam(model.parameters()) for model in models]
 
@@ -152,8 +157,8 @@ for indx, model in enumerate(models):
         print("Done!\n\n")
 
 
-if len(models) > 0:
-    torch.save(model_512_adam_relu.state_dict(), "models/model_512_relu_adam_16.pth")
-    torch.save(model_512_adam_sigmoid.state_dict(), "models/model_512_sigmoid_adam_16.pth")
-    torch.save(model_512_adam_tanh.state_dict(), "models/model_512_tanh_adam_16.pth")
-    torch.save(model_512_adam_elu.state_dict(), "models/model_512_elu_adam_16.pth")
+# if len(models) > 0:
+#     torch.save(model_512_adam_relu.state_dict(), "models/model_512_relu_adam_16.pth")
+#     torch.save(model_512_adam_sigmoid.state_dict(), "models/model_512_sigmoid_adam_16.pth")
+#     torch.save(model_512_adam_tanh.state_dict(), "models/model_512_tanh_adam_16.pth")
+#     torch.save(model_512_adam_elu.state_dict(), "models/model_512_elu_adam_16.pth")
